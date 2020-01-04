@@ -1,0 +1,10 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "UdacityProject2"
+  },
+  {
+    "ParameterKey": "MyCidrIp",
+    "ParameterValue": "172.10.44.179/32"
+  }
+]
