@@ -1,15 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
-            steps {
-                sh 'echo "Hello from course 3"'
-                sh '''
-                echo "Multiline shell steps works too"
-                ls -lah
-                '''
-                sh 'tidy -q -e *.html'
-            }
+      stage('Lint HTML') {
+        steps {
+          sh 'tidy -q -e *.html'
         }
+      stage('Upload to AWS') {
+        steps {
+          withAWS(region:'us-east-1',credentials:'AKIA3OMXQXG4TV2S5EPU') {
+            s3Upload(pathStyleAccessEnabled:true, payloadSigningEnabled: true, file:'index.html', bucket:'c3pipelines')
+          }
+        }
+      }
     }
 }
