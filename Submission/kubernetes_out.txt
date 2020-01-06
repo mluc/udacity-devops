@@ -1,0 +1,12 @@
+(.devops) roberts-mbp:devops myluc$ ./run_kubernetes.sh
+pod/my-app created
+NAME     READY   STATUS              RESTARTS   AGE
+my-app   0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+(.devops) roberts-mbp:devops myluc$ ./run_kubernetes.sh
+Error from server (AlreadyExists): pods "my-app" already exists
+NAME     READY   STATUS    RESTARTS   AGE
+my-app   1/1     Running   0          37s
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
