@@ -1,42 +1,23 @@
 [![CircleCI](https://circleci.com/gh/mluc/udacity-devops/tree/project4.svg?style=svg)](https://circleci.com/gh/mluc/udacity-devops/tree/project4)
 
-## Project Overview
 
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
+## A summary of the project
+- This project is to operationalize a machine learning microservice API.
+- A flask app with route `/predict` can be called and it will return prediction values (the result is from model_data/boston_housing_prediction.joblib).
+- The flask app is launched in local docker container. To verify: an API call to `/predict` returns prediction values
+- The docker image is uploaded to docker hub
+- Kubernetes is setup to run locally, the same docker image from docker hub is pulled and run in a Kubernetes pod. To verify: an API call to `/predict` returns prediction values 
+- CirlceCI is integrated to run the lint check on the same environment
 
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
+## How to run the Python scripts and web app
+sudo python3 app.py
 
-### Project Tasks
-
-Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
-* Test your project code using linting
-* Complete a Dockerfile to containerize this application
-* Deploy your containerized application using Docker and make a prediction
-* Improve the log statements in the source code for this application
-* Configure Kubernetes and create a Kubernetes cluster
-* Deploy a container using Kubernetes and make a prediction
-* Upload a complete Github repo with CircleCI to indicate that your code has been tested
-
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
-
-**The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
-
-## Setup the Environment
-
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
-
-### Running `app.py`
-
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
-
-### Kubernetes Steps
-
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+## Explanation of the files in the repository
+- app.py: a flask app
+- Dockerfile: to setup docker image and start the flask app
+- Makefile: has commands to install the environment, run lint check, ..
+- requirement.txt: has dependencies to run the app
+- run_docker.sh: has commands to build the docker image and start the app
+- upload_docker.sh: has commands to login to docker hub, tag the image with <docker ID/path>, then push the image to docker hub
+- run_kubernetes.sh: has commands to pull the same docker image from docker hub and run the container in a kubernetes pod
+- .circleci/config.yml: setup the same environment and run lint check in cirlceci
