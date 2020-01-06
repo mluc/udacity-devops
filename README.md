@@ -1,6 +1,9 @@
 [![CircleCI](https://circleci.com/gh/mluc/udacity-devops/tree/project4.svg?style=svg)](https://circleci.com/gh/mluc/udacity-devops/tree/project4)
 
 
+## Github:
+https://github.com/mluc/udacity-devops
+
 ## A summary of the project
 - This project is to operationalize a machine learning microservice API.
 - A flask app with route `/predict` can be called and it will return prediction values (the result is from model_data/boston_housing_prediction.joblib).
