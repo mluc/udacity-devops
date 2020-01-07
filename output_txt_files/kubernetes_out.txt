@@ -10,3 +10,39 @@ my-app   1/1     Running   0          37s
 Forwarding from 127.0.0.1:8000 -> 80
 Forwarding from [::1]:8000 -> 80
 Handling connection for 8000
+
+
+Roberts-MacBook-Pro:devops myluc$ kubectl get pod
+NAME     READY   STATUS    RESTARTS   AGE
+my-app   1/1     Running   0          3m38s
+
+
+Roberts-MacBook-Pro:devops myluc$ kubectl logs my-app
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator DecisionTreeRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator GradientBoostingRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator DecisionTreeRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator GradientBoostingRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+ * Debugger is active!
+ * Debugger PIN: 741-350-132
+[2020-01-07 00:43:19,012] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2020-01-07 00:43:19,030] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2020-01-07 00:43:19,041] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2020-01-07 00:43:19,045] INFO in app: Prediction values:
+[20.35373177134412]
+127.0.0.1 - - [07/Jan/2020 00:43:19] "POST /predict HTTP/1.1" 200 -
